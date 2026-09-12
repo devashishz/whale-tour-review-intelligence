@@ -1,11 +1,12 @@
-# Security: Never commit API keys
 .env
-
-# Virtual Environments
 .venv/
 venv/
 __pycache__/
+*.pyc
 
-# Output artifacts (keep repos lightweight)
+data/raw_scraped_*.json
+data/scraped_reviews.jsonl
 *.xlsx
-data/*.parquet
+
+.DS_Store
+Thumbs.db
