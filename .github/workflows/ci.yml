@@ -33,7 +33,7 @@ jobs:
 
       - name: Run Unit Tests with Pytest
         run: |
-          pytest tests/ -v
+          python -m pytest tests/ -v
 
       - name: Smoke Test (Execute Analytics Pipeline)
         run: |
