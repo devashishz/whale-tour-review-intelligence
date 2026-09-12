@@ -1,6 +1,7 @@
 import polars as pl
 import xlsxwriter
 
+
 def build_excel_report(
     input_file: str = "data/enriched_reviews.jsonl",
     output_excel: str = "Whale_Tour_Captain_Leaderboards.xlsx"

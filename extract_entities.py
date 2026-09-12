@@ -1,9 +1,10 @@
 import os
+
 import polars as pl
 from dotenv import load_dotenv
 from google import genai
-from google.genai import types
-from pydantic import BaseModel, Field
+from google.genai import errors, types
+from pydantic import BaseModel, Field, ValidationError
 from tqdm import tqdm
 
 load_dotenv()
@@ -35,7 +36,7 @@ def extract_entities_from_review(review_text: str) -> ReviewExtraction:
     """Passes review text to Gemini and enforces Pydantic structured output."""
     try:
         response = client.models.generate_content(
-            model="gemini-3.6-flash",
+            model="gemini-2.5-flash",
             contents=review_text,
             config=types.GenerateContentConfig(
                 system_instruction=(
@@ -53,7 +54,7 @@ def extract_entities_from_review(review_text: str) -> ReviewExtraction:
         # When response_schema is passed, response.parsed automatically returns the Pydantic model
         return response.parsed
 
-    except Exception as e:
+    except (errors.APIError, ValidationError) as e:
         print(f"Error parsing review: {e}")
         return ReviewExtraction(has_captain_mention=False, captains=[], sentiment="Unknown")
 

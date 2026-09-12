@@ -1,7 +1,9 @@
 import polars as pl
 import pytest
 from pydantic import ValidationError
+
 from extract_entities import ReviewAnalysis
+
 
 def test_pydantic_schema_validation():
     """Ensure ReviewAnalysis parses valid responses and rejects invalid ones."""

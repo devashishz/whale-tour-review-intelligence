@@ -1,8 +1,9 @@
 import os
 from pathlib import Path
-from dotenv import load_dotenv
-from apify_client import ApifyClient
+
 import polars as pl
+from apify_client import ApifyClient
+from dotenv import load_dotenv
 
 # 1. Environment & Path Configuration
 load_dotenv()
