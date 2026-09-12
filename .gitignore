@@ -1,0 +1,11 @@
+# Security: Never commit API keys
+.env
+
+# Virtual Environments
+.venv/
+venv/
+__pycache__/
+
+# Output artifacts (keep repos lightweight)
+*.xlsx
+data/*.parquet
